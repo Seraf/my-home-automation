@@ -1,0 +1,19 @@
+version: '3.6'  
+services:  
+  web:
+    restart: always
+    image: habridge/ha-bridge-raspberrypi3:latest
+    #ports:
+    #  - "8080:80"
+    #  - "1900:1900/udp"
+    #  - "50000:50000/udp"
+    volumes:
+      - /home/pi/docker-data/habridge:/ha-bridge/data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: always
+    logging:
+      options:
+        max-size: "2m"
+        max-file: "10"
+    network_mode: host
